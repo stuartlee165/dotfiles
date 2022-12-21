@@ -1,0 +1,66 @@
+! X11 is started in terminal using command: startx
+! the file .xinitrc gets run
+! we have included a line to merge in the below config each time this happens
+! config file for the X Window System
+! called X11 because mostly people use version 11 from 1987
+! its a server acting between application and user
+! use with a window manager like i3
+! decoupled from linux kernal (unlike windows) so can choose window manager
+! any changes made to keyboard layout for system will need to be updated here too
+*.foreground: #C6C6C6
+*.background: #1C1C1C
+*.cursorColor: #444444
+
+! black 236 238
+*.color0: #303030
+*.color8: #444444
+! red 167
+*.color1: #d75f5f
+*.color9: #d75f5f
+! green 108
+*.color2: #87AF87
+*.color10: #87AF87
+! yellow 221
+*.color3: #ffd75f
+*.color11: #ffd75f
+! blue 110
+*.color4: #87afd7
+*.color12: #87afd7
+! magenta 146
+*.color5: #afafd7
+*.color13: #afafd7
+! cyan 75
+*.color6: #afd7ff
+*.color14: #afd7ff
+! white 239 15
+*.color7: #e4e4e4
+*.color15: #ffffff
+
+URxvt*font: xft:DejaVuSansMono:size=10:antialias=true
+URxvt*borderLess: false
+URxvt*externalBorder: 0
+URxvt*internalBorder: 4
+URxvt*scrollBar: false
+URxvt*saveLines: 5000
+ 
+
+! Enables Perl extension for URxvt
+! URxvt is the terminal emulator we use on our XWindow / i3 setup
+! URxvt is a tty
+URxvt*perl-ext-common: default,tabbedex
+
+! Set colours of tabs
+URxvt.keysym.Control-Shift-N: perl:tabbedex:new_tab
+URxvt.keysym.Control-Shift-K: perl:tabbedex:next_tab
+URxvt.keysym.Control-Shift-J: perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
+URxvt.keysym.Control-Shift-H: perl:tabbedex:move_tab_left
+URxvt.keysym.Control-Shift-L: perl:tabbedex:move_tab_right
+
+URxvt*tabbedex.tabbar-fg: 15
+URxvt*tabbedex.tabbar-bg: 236
+URxvt*tabbedex.tab-fg: 110
+URxvt*tabbedex.tab-bg: 236
+URxvt*tabbedex.transparent: true
+URxvt*tabbedex.new-button: false
+
