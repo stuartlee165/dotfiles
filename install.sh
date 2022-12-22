@@ -19,3 +19,15 @@ ln -sf "$HOME/dotfiles/nvim/init.vim" "$HOME/.config/nvim/init.vim"
 # we can't use -f here (as above) as this only works for single files and here we are linking whole directory
 rm -rf "$HOME/.config/X11"
 ln -s "$HOME/dotfiles/X11" "$HOME/.config"
+
+
+
+
+#######
+# i3  #
+#######
+
+# Delete the directory in case it exists
+rm -rf "$HOME/.config/i3"
+# Create a symlink targetting the whole i3 directory
+ln -s "$HOME/dotfiles/i3" "$HOME/.config"
