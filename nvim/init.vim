@@ -81,6 +81,8 @@ Plug 'https://github.com/svermeulen/vim-subversive'
 Plug 'https://github.com/svermeulen/vim-cutlass'
 " fuzzy search in vim
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+" make csvs more readable
+Plug 'https://github.com/chrisbra/csv.vim'
 " Initialize plugin system
 call plug#end()
 
@@ -275,3 +277,26 @@ set undofile
 set undodir=$HOME/.config/nvim/undo
 set undolevels=1000
 set undoreload=1000
+
+
+" Config for chrisbra/csv.vim
+" format each cell of csv in more readable when writing to buffer
+" doesnt save formatting when write file
+augroup filetype_csv
+    autocmd! 
+
+    autocmd BufRead,BufWritePost *.csv :%ArrangeColumn!
+    autocmd BufWritePre *.csv :%UnArrangeColumn
+augroup END
+
+" :nmap - create new mapping for NORMAL mode
+" :imap - create new mapping for INSERT mode
+" :xmap - create new mapping for VISUAL mode
+" map will result in recirsive mappings (see pg 194 mouseless)
+" :nnoremap is non-recursive version
+" <space> <c-w> (Cntl W) <cr> (Enter)
+" :help key-notation -> to see full list
+" q:		- open the command history
+" q/ q! 	- open the search history
+" CTRL+f	- open the command history when in command line mode. edit
+" 		- command then hit enter
