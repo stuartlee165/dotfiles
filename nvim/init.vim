@@ -1,4 +1,4 @@
-call plug#begin('$HOME/.local/share/nvim/plugged')
+call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
 "call plug#begin()
 "   This config file should be save here for neovim: .config/nvim/init.vim
 "   Plugins should be installed using https://github.com/junegunn/vim-plug

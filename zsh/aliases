@@ -1,0 +1,15 @@
+alias ll='ls -lah'
+
+### GIT ###
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gpom='git push origin master'
+# alias for directory stack
+# second line creates aliases for 1-100 so can quickly jump in stack
+alias d='dirs -v'
+for index ({1..100}) alias "$index"="cd +${index}"; unset index
+
+
+### ARCH ###
+alias sps='sudo pacman -S'

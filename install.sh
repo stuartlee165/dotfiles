@@ -21,6 +21,16 @@ rm -rf "$HOME/.config/X11"
 ln -s "$HOME/dotfiles/X11" "$HOME/.config"
 
 
+# install neovim plugin manager
+[ ! -f "$DOTFILES/nvim/autoload/plug.vim" ] \
+    && curl -fLo "$DOTFILES/nvim/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+mkdir -p "$XDG_CONFIG_HOME/nvim/autoload"
+ln -sf "$DOTFILES/nvim/autoload/plug.vim" "$XDG_CONFIG_HOME/nvim/autoload/plug.vim"
+
+# Install (or update) all the plugins
+nvim --noplugin +PlugUpdate +qa
 
 
 #######
@@ -40,3 +50,17 @@ ln -s "$HOME/dotfiles/i3" "$HOME/.config"
 mkdir -p "$HOME/.config/zsh"
 ln -sf "$HOME/dotfiles/zsh/.zshenv" "$HOME"
 ln -sf "$HOME/dotfiles/zsh/.zshrc" "$HOME/.config/zsh"
+ln -sf "$HOME/dotfiles/zsh/aliases" "$HOME/.config/zsh/aliases"
+
+# create symlink for external file
+# external directory contains the completion.zsh file which is used to improve autocomplete
+# # external directory is where any code not written by is stored
+# first remove any existing files
+# then create new file with symlink
+rm -rf "$HOME/.config/zsh/external"
+ln -sf "$HOME/dotfiles/zsh/external" "$HOME/.config/zsh"
+# to autoload everything from external directory need to add:
+# prepend $ZDOTDIR/external to $fpath
+# # zsh will therefore look in this directory for any external function we want to autoload
+fpath=($ZDOTDIR/external $fpath)
+
