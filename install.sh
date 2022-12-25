@@ -13,18 +13,6 @@ mkdir -p "$XDG_CONFIG_HOME/nvim/undo"
 # # only linking the init file as we don't want other files such as the undo files to be linked
 ln -sf "$DOTFILES/nvim/init.vim" "$XDG_CONFIG_HOME/nvim/init.vim"
 
-# Same as above for picom which is used to manage window opacity
-mkdir -p "$XDG_CONFIG_HOME/picom"
-ln -sf "$DOTFILES/picom/picom.conf" "$XDG_CONFIG_HOME/picom/picom.conf"
-
-# Create links for XResources
-# Want to link the whole X11 file
-# Remove the existing directory manually if it exists so the symlink can be created
-# we can't use -f here (as above) as this only works for single files and here we are linking whole directory
-rm -rf "$XDG_CONFIG_HOME/X11"
-ln -s "$DOTFILES/X11" "$XDG_CONFIG_HOME"
-
-
 # install neovim plugin manager
 # -f flags if file exists
 # ! negation operator -> expression will be true if output of -f is false
@@ -39,6 +27,26 @@ ln -sf "$DOTFILES/nvim/autoload/plug.vim" "$XDG_CONFIG_HOME/nvim/autoload/plug.v
 
 # Install (or update) all the plugins
 nvim --noplugin +PlugUpdate +qa
+
+#########
+# picom #
+#########
+
+# Same as above for picom which is used to manage window opacity
+mkdir -p "$XDG_CONFIG_HOME/picom"
+ln -sf "$DOTFILES/picom/picom.conf" "$XDG_CONFIG_HOME/picom/picom.conf"
+
+
+#######
+# X11 #
+#######
+#
+# Create links for XResources
+# Want to link the whole X11 file
+# Remove the existing directory manually if it exists so the symlink can be created
+# we can't use -f here (as above) as this only works for single files and here we are linking whole directory
+rm -rf "$XDG_CONFIG_HOME/X11"
+ln -s "$DOTFILES/X11" "$XDG_CONFIG_HOME"
 
 
 #######
