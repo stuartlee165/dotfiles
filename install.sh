@@ -13,6 +13,10 @@ mkdir -p "$XDG_CONFIG_HOME/nvim/undo"
 # # only linking the init file as we don't want other files such as the undo files to be linked
 ln -sf "$DOTFILES/nvim/init.vim" "$XDG_CONFIG_HOME/nvim/init.vim"
 
+# Same as above for picom which is used to manage window opacity
+mkdir -p "$XDG_CONFIG_HOME/picom"
+ln -sf "$DOTFILES/picom/picom.conf" "$XDG_CONFIG_HOME/picom/picom.conf"
+
 # Create links for XResources
 # Want to link the whole X11 file
 # Remove the existing directory manually if it exists so the symlink can be created
@@ -88,3 +92,19 @@ cp -rf "$DOTFILES/fonts" "$XDG_DATA_HOME"
 
 mkdir -p "$XDG_CONFIG_HOME/dunst"
 ln -sf "$DOTFILES/dunst/dunstrc" "$XDG_CONFIG_HOME/dunst/dunstrc"
+
+
+
+########
+# tmux #
+########
+
+# make the tmux directory in the $HOME/.config directory if it doesn't 
+# already exist
+# then create a symlink to the dotfiles file
+mkdir -p "$XDG_CONFIG_HOME/tmux"
+ln -sf "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
+# download the tmux plugin manager if its not already on the system
+[ ! -d "$XDG_CONFIG_HOME/tmux/plugins" ] \
+&& git clone https://github.com/tmux-plugins/tpm \
+"$XDG_CONFIG_HOME/tmux/plugins/tpm"

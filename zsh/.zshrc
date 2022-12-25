@@ -32,6 +32,9 @@ source $HOME/dotfiles/zsh/external/completion.zsh
 # load promt modifier script (this is an external script saved in external which updates the prompt look)
 autoload -Uz prompt_purification_setup; prompt_purification_setup
 
+setopt AUTO_PARAM_SLASH
+setopt AUTO_LIST
+
 # Push and pop directories from a directory stack
 # Makes accessing historically used files easier
 # Push the current directory visited on to the stack.
@@ -61,6 +64,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Load any custom scripts we created
 source $DOTFILES/zsh/scripts.sh
 
+# Replace CTRL+l (clear screen) with CTRL+g because we use CTRL+l in tmux to move to left pane
+bindkey -r '^l'
+bindkey -r '^g'
+bindkey -s '^g' 'clear\n'
+
 # load fzf autocompletion
 # verifies that fzf exists and if it does source it
 # and create some keybindings
@@ -68,6 +76,9 @@ if [ $(command -v "fzf") ]; then
     source /usr/share/fzf/completion.zsh
     source /usr/share/fzf/key-bindings.zsh
 fi
+
+# run picom in the backgroun (this allows transparent windows)
+pgrep -x picom >/dev/null || picom&
 
 # Start i3 on startup (page 174 mouseless dev)
 # if tty = 1 then run i3

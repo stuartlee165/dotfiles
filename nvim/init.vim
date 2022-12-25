@@ -27,11 +27,14 @@ Plug'mortonfox/nerdtree-clip'
 " :Pyimport pandas -> opens pandas import file
 " /r : rename variable
 " Cntrl space :autocomplete suggestions
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
 " Shows errors in code indicated by >>
 " The error comment is shown in the status bar below
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
+
+" Compiler and linter alternative to ale
+Plug 'neomake/neomake'
 
 " Create doc strings for functions use :DocstringTypes
 Plug 'pixelneo/vim-python-docstring'
@@ -83,7 +86,19 @@ Plug 'https://github.com/svermeulen/vim-cutlass'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 " make csvs more readable
 Plug 'https://github.com/chrisbra/csv.vim'
+" smart switching between tmux and vim
+Plug 'https://github.com/christoomey/vim-tmux-navigator'
 " Initialize plugin system
+" allow tmux completions in vim
+Plug 'wellle/tmux-complete.vim'
+" For coc.vim to work, you'll need nodejs and yarn (both available in official repos).
+" Only bash-language-server is configured with coc.vim. See the file coc-settings.json.
+" To make it work, you need to install bash-language-server: `sudo pacman -S bash-language-server`
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Startify startup screen
+Plug 'https://github.com/mhinz/vim-startify'
+" View colours whilst editing
+Plug 'https://github.com/ap/vim-css-color'
 call plug#end()
 
 " show numbers on left
@@ -129,7 +144,7 @@ nnoremap <Leader>q[ ciw[]<Esc>P
 nnoremap <Leader>q{ ciw{}<Esc>P
 
 "setup ale fixers
-let b:ale_fixers = ['isort']
+" let b:ale_fixers = ['isort']
 
 " Set default formatting for vim-python-doc-string
 let g:python_style = 'numpy'
@@ -167,6 +182,16 @@ nmap <leader>ne :NERDTreeToggle<cr>
 " shows end of buffer
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" remove the mode (normal vs insert etc.)
+let g:airline_section_a=''
+" remove file encoding from status bar
+let g:airline_section_y=''
+" remove current position from status bar
+let g:airline_section_z=''
+" remove separators for empty sections
+let g:airline_skip_empty_sections = 1
+" turn off the whitespace warning
+let g:airline#extensions#whitespace#enabled = 0
 
 " Set text width to 79 for python files (can highlight text and use gq to
 " autoformat to correct line length)
@@ -289,6 +314,110 @@ augroup filetype_csv
     autocmd BufWritePre *.csv :%UnArrangeColumn
 augroup END
 
+"###########
+"# coc.vim #
+"###########
+
+" Coc extensions (need to install yarn or npm, both available in official repo of Arch Linux)
+let g:coc_global_extensions = [
+            \ 'coc-snippets',
+            \ 'coc-css', 
+            \ 'coc-html',
+            \ 'coc-json', 
+            \ 'coc-pyright', 
+            \]
+
+
+" This is a very basic configuration - you can do way more than that (but do you really want to?)
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use K to show documentation in preview window
+" use cnt+w (twice) to enter preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+"
+" You need pip install neovim in any virtualenv for Ultisnips to work
+" Force vim to load python3 before python2
+if has('python3')
+endif
+
+"###########
+"# Neomake #
+"###########
+
+" Needs to install shellcheck and vint: `sudo pacman -S shellcheck vint`
+
+" Neomake signs in the gutter
+let g:neomake_error_sign = {'text': '', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {
+            \   'text': '',
+            \   'texthl': 'NeomakeWarningSign',
+            \ }
+let g:neomake_message_sign = {
+            \   'text': '',
+            \   'texthl': 'NeomakeWarningSign',
+            \ }
+let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+
+" update neomake when save file
+call neomake#configure#automake('w')
+
+command! -bang -nargs=* -complete=file Make NeomakeProject <args>
+
+" Enable linters
+let g:neomake_sh_enabled_makers = ['shellcheck']
+let g:neomake_vim_enabled_makers = ['vint']
 " :nmap - create new mapping for NORMAL mode
 " :imap - create new mapping for INSERT mode
 " :xmap - create new mapping for VISUAL mode

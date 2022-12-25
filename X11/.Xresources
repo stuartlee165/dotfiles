@@ -44,7 +44,6 @@ URxvt*externalBorder: 0
 URxvt*internalBorder: 4
 URxvt*scrollBar: false
 URxvt*saveLines: 5000
- 
 
 ! Enables Perl extension for URxvt
 ! URxvt is the terminal emulator we use on our XWindow / i3 setup
