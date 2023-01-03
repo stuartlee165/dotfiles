@@ -1,5 +1,7 @@
+" Call the plugin manager
+" The plugin manager will be installed automatically by the install.sh script
+" $XDG_CONFIG_HOME should be set to $HOME/.config/
 call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
-"call plug#begin()
 "   This config file should be save here for neovim: .config/nvim/init.vim
 "   Plugins should be installed using https://github.com/junegunn/vim-plug
 "   and saved here: .local/share/nvim/plugged
@@ -359,17 +361,13 @@ endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
@@ -392,6 +390,14 @@ endfunction
 if has('python3')
 endif
 
+" use 4 spaces instead of tab ()
+" copy indent from current line when starting a new line
+
+set autoindent
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 "###########
 "# Neomake #
 "###########
