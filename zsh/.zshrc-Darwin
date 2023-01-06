@@ -5,7 +5,7 @@
 # Check zsh-syntax-highlighting has been installed and run (install if needed)
 FILE=$HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if ! test -f "$FILE"; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.config/zsh/external/
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.config/zsh/external/zsh-syntax-highlighting
     source $HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
     source $HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
