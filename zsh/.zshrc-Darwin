@@ -1,0 +1,12 @@
+### OS Specific Configs ###
+# Darwin (i.e. macbook)
+
+# source zsh-syntax-highlighting plugin
+source $HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# load fzf autocompletion
+# verifies that fzf exists and if it does source it
+# and create some keybindings
+# Arch linux source
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

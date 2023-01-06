@@ -58,8 +58,7 @@ bindkey -M vicmd v edit-command-line
 # Allows to jump to directories using bd
 # E.g. bd a
 source $HOME/dotfiles/zsh/external/bd.zsh
-# source zsh-syntax-highlighting plugin
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
 # Load any custom scripts we created
 source $DOTFILES/zsh/scripts.sh
@@ -69,27 +68,5 @@ bindkey -r '^l'
 bindkey -r '^g'
 bindkey -s '^g' 'clear\n'
 
-# load fzf autocompletion
-# verifies that fzf exists and if it does source it
-# and create some keybindings
-if [ $(command -v "fzf") ]; then
-    source /usr/share/fzf/completion.zsh
-    source /usr/share/fzf/key-bindings.zsh
-fi
-
-# run picom in the backgroun (this allows transparent windows)
-pgrep -x picom >/dev/null || picom&
-
-# Start i3 on startup (page 174 mouseless dev)
-# if tty = 1 then run i3
-# only want to do this first tty not every tty that is created
-# then
-# pgrep p-> process -> fetch process
-# || logical or operator if process i3 exists true returned and nothing else is executed
-# if no i3 process then execute startx "$XDG_CONFIG_HOME/X11/.xinitrc"
-# startx process then will replace the shell
-# this is then replaced with i3 (thanks to .xinitrc see last line exex i3)
-if [ "$(tty)" = "/dev/tty1" ];
-then
-    pgrep i3 || exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
-fi
+### OS Specific Configs ###
+source "${HOME}/dotfiles/zsh/.zshrc-`uname`"
