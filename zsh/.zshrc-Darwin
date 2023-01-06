@@ -38,11 +38,8 @@ fi
 
 
 # Install required fonts if not available
-if brew ls --versions font-hack-nerd-font > /dev/null; then
-  # The package is installed
+if ! brew ls --versions font-hack-nerd-font > /dev/null; then
     brew tap homebrew/cask-fonts
     brew install --cask font-hack-nerd-font
-else
-  # The package is not installed
 fi
 
