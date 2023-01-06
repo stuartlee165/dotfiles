@@ -47,8 +47,6 @@ Plug 'tpope/vim-fugitive'
 " Applies Black formatting to Python files
 Plug 'https://github.com/psf/black'
 "
-" Debugging Interface
-Plug 'https://github.com/puremourning/vimspector'
 " Changing surrounding (cs) quotes etc.
 " cs"' : changes to single quotes
 Plug 'tpope/vim-surround'
@@ -117,6 +115,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Switch buffers
+map <F10> :bn<cr>
+map <F12> :bp<cr>
+
 "Defines where default buffer splits goto
 set splitbelow splitright
 map <Leader>tt :vnew term://
@@ -160,23 +163,6 @@ let g:vimspector_enable_mappings = 'HUMAN'
 " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
 
 
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
-nmap <Leader><F2> <Plug>VimspectorUpFrame
-nmap <Leader><F12> <Plug>VimspectorDownFrame
-nnoremap <Leader>dd :call vimspector#Launch()<CR>
-nnoremap <Leader>dr :call vimspector#Reset()<CR>
-nnoremap <Leader>dc :call vimspector#Continue()<CR>
-
-nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
-
-nmap <Leader>dk <Plug>VimspectorRestart
-nmap <Leader>dh <Plug>VimspectorStepOut
-nmap <Leader>dl <Plug>VimspectorStepInto
-nmap <Leader>dj <Plug>VimspectorStepOver
 " NERDTree shortcut
 nmap <leader>ne :NERDTreeToggle<cr>
 
