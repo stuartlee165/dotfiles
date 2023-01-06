@@ -10,3 +10,6 @@ source $HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlightin
 # Arch linux source
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Start tmux and source the venv_base
+if [ "$TMUX" = "" ]; then tmux; fi
+source $HOME/venv_base/bin/activate
