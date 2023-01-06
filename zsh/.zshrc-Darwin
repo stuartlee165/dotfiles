@@ -11,5 +11,21 @@ source $HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlightin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Start tmux and source the venv_base
+# First check if tmux is installed and if not install
+if ! command -v tmux &> /dev/null
+then
+    brew install tmux
+fi
 if [ "$TMUX" = "" ]; then tmux; fi
-source $HOME/venv_base/bin/activate
+
+
+# Check the base virtual environment exists and if not create it before sourcing
+FILE=$HOME/venv_base/bin/activate
+if ! test -f "$FILE"; then
+    python3 -m venv venv_base
+    source $HOME/venv_base/bin/activate
+    pip install -r requirements.txt
+else
+    source $HOME/venv_base/bin/activate
+fi
+
