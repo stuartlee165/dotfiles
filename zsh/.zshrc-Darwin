@@ -2,7 +2,14 @@
 # Darwin (i.e. macbook)
 
 # source zsh-syntax-highlighting plugin
-source $HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Check zsh-syntax-highlighting has been installed and run (install if needed)
+FILE=$HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if ! test -f "$FILE"; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.config/zsh/external/
+    source $HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+    source $HOME/.config/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # load fzf autocompletion
 # verifies that fzf exists and if it does source it
