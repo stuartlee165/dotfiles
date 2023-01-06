@@ -38,8 +38,9 @@ fi
 
 
 # Install required fonts if not available
-if ! brew ls --versions font-hack-nerd-font > /dev/null; then
+if ! brew ls --versions | grep font-hack-nerd-font > /dev/null; then
     brew tap homebrew/cask-fonts
     brew install --cask font-hack-nerd-font
+    echo 'For status bar icons to work: edit profile, text, non-ascii change to hack nerd font mono'
 fi
 
