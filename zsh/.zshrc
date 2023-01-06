@@ -70,3 +70,10 @@ bindkey -s '^g' 'clear\n'
 
 ### OS Specific Configs ###
 source "${HOME}/dotfiles/zsh/.zshrc-`uname`"
+
+
+### Install problems ###
+# The following will need to be manually installed:
+# fzf
+# zsh-syntax-highlighting
+# fonts https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts
