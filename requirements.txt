@@ -1,0 +1,8 @@
+neovim
+black
+ipdb
+pytest
+pandas
+numpy
+pandas
+numpy
