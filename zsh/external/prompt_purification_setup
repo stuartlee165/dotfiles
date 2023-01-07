@@ -111,7 +111,7 @@ prompt_purification_setup() {
     autoload -Uz add-zsh-hook
     add-zsh-hook precmd prompt_purity_precmd
 
-    ZSH_THEME_GIT_PROMPT_PREFIX=" %F{yellow}λ:%f%F{blue}"
+    ZSH_THEME_GIT_PROMPT_PREFIX=" %f%F{blue}"
     ZSH_THEME_GIT_PROMPT_DIRTY=""
     ZSH_THEME_GIT_PROMPT_CLEAN=""
 
@@ -127,7 +127,7 @@ prompt_purification_setup() {
 
     prompt_git_branch
     RPROMPT='$(prompt_git_info) $(git_prompt_status)'
-    PROMPT=$'%F{white}%~ %B%F{blue}\n>%f%b '
+    PROMPT=$'%F{white}% $PWD %F{blue}\n%B>%f%b '
 }
 
 prompt_purification_setup
