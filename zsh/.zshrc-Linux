@@ -15,6 +15,19 @@ fi
 # run picom in the backgroun (this allows transparent windows)
 pgrep -x picom >/dev/null || picom&
 
+# Run Tmux (if not already running)
+if [ "$TMUX" = "" ]; then tmux; fi
+
+# Check the base virtual environment exists and if not create it before sourcing
+FILE=$HOME/venv_play/bin/activate
+if ! test -f "$FILE"; then
+    python3 -m venv venv_play
+    source $HOME/venv_play/bin/activate
+    pip install -r $HOME/dotfiles/requirements.txt
+else
+    source $HOME/venv_play/bin/activate
+fi
+
 # Start i3 on startup (page 174 mouseless dev)
 # if tty = 1 then run i3
 # only want to do this first tty not every tty that is created
