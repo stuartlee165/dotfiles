@@ -291,17 +291,6 @@ set undodir=$HOME/.config/nvim/undo
 set undolevels=1000
 set undoreload=1000
 
-
-" Config for chrisbra/csv.vim
-" format each cell of csv in more readable when writing to buffer
-" doesnt save formatting when write file
-augroup filetype_csv
-    autocmd! 
-
-    autocmd BufRead,BufWritePost *.csv :%ArrangeColumn!
-    autocmd BufWritePre *.csv :%UnArrangeColumn
-augroup END
-
 "###########
 "# coc.vim #
 "###########
