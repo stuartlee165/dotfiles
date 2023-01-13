@@ -84,8 +84,8 @@ Plug 'https://github.com/svermeulen/vim-subversive'
 Plug 'https://github.com/svermeulen/vim-cutlass'
 " fuzzy search in vim
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-" make csvs more readable
-Plug 'https://github.com/chrisbra/csv.vim'
+" make csvs more readable (too slow for large csvs)
+" Plug 'https://github.com/chrisbra/csv.vim'
 " smart switching between tmux and vim
 Plug 'https://github.com/christoomey/vim-tmux-navigator'
 " Initialize plugin system
