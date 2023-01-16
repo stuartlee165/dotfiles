@@ -21,7 +21,7 @@ Plug 'https://github.com/adelarsq/vim-matchit'
 " Nerd Tree - nagivate files (\ne) 
 Plug 'preservim/nerdtree'
 "allows copy paste of filepath in NerdTree (use mb)
-Plug'mortonfox/nerdtree-clip'
+Plug 'mortonfox/nerdtree-clip'
 
 " code auto-completion and documentation viewing
 " shift K: view documentation
@@ -343,8 +343,7 @@ function! s:check_back_space() abort
 endfunction
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
 
 " Use K to show documentation in preview window
 " use cnt+w (twice) to enter preview window
