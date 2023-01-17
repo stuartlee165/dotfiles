@@ -12,6 +12,7 @@ mkdir -p "$XDG_CONFIG_HOME/nvim/undo"
 # f foreces creation. It removes any existing link or file with the same name before creating a new symlink
 # # only linking the init file as we don't want other files such as the undo files to be linked
 ln -sf "$DOTFILES/nvim/init.vim" "$XDG_CONFIG_HOME/nvim/init.vim"
+ln -sf "$DOTFILES/nvim/coc-settings.json" "$XDG_CONFIG_HOME/nvim/coc-settings.json"
 
 # install neovim plugin manager
 # -f flags if file exists
