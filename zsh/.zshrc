@@ -5,6 +5,12 @@ fpath=($ZDOTDIR/external $fpath)
 
 # Source aliases from aliases file
 source $XDG_CONFIG_HOME/zsh/aliases
+# Source system specific aliases if it exists
+ALIASES_SYSTEM_SPECIFIC=$HOME/.config/zsh/aliases_system_specific
+if test -f "$ALIASES_SYSTEM_SPECIFIC"; then
+    source $ALIASES_SYSTEM_SPECIFIC
+fi
+
 
 # add hjkl to navigate autocompletion menu
 # needs to go before autocompletion (just below)
