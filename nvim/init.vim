@@ -97,6 +97,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/mhinz/vim-startify'
 " View colours whilst editing
 Plug 'https://github.com/ap/vim-css-color'
+" View markdown files in a preview window
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 " show numbers on left
