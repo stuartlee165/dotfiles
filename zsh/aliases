@@ -12,3 +12,6 @@ for index ({1..100}) alias "$index"="cd +${index}"; unset index
 
 ### ARCH ###
 alias sps='sudo pacman -S'
+
+## Notes ##
+export notes=$HOME/dotfiles/notes
