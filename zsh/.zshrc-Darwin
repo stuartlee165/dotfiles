@@ -44,3 +44,11 @@ if ! brew ls --versions | grep font-hack-nerd-font > /dev/null; then
     echo 'For status bar icons to work: edit profile, text, non-ascii change to hack nerd font mono'
 fi
 
+# Starling config
+if [ -e /Users/stuart.lee/.starling/etc/profile ]; then
+  . /Users/stuart.lee/.starling/etc/profile
+else
+  echo "Could not find '/Users/stuart.lee/.starling/etc/profile'"
+fi
+
+
