@@ -15,3 +15,6 @@ alias sps='sudo pacman -S'
 
 ## Notes ##
 export notes=$HOME/dotfiles/notes
+
+## Venv_base library ##
+export vbase=$HOME/venv_base/lib/python3.10/site-packages
