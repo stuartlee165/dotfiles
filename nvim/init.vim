@@ -1,3 +1,16 @@
+" VIM NOTES
+" :nmap - create new mapping for NORMAL mode
+" :imap - create new mapping for INSERT mode
+" :xmap - create new mapping for VISUAL mode
+" map will result in recirsive mappings (see pg 194 mouseless)
+" :nnoremap is non-recursive version
+" <space> <c-w> (Cntl W) <cr> (Enter)
+" :help key-notation -> to see full list
+" q:		- open the command history
+" q/ q! 	- open the search history
+" CTRL+f	- open the command history when in command line mode. edit
+" 		- command then hit enter
+
 " Call the plugin manager
 " The plugin manager will be installed automatically by the install.sh script
 " $XDG_CONFIG_HOME should be set to $HOME/.config/
@@ -99,6 +112,9 @@ Plug 'https://github.com/mhinz/vim-startify'
 Plug 'https://github.com/ap/vim-css-color'
 " View markdown files in a preview window
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Telescope fuzzy finder preview
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " show numbers on left
@@ -385,14 +401,10 @@ command! -bang -nargs=* -complete=file Make NeomakeProject <args>
 " Enable linters
 let g:neomake_sh_enabled_makers = ['shellcheck']
 let g:neomake_vim_enabled_makers = ['vint']
-" :nmap - create new mapping for NORMAL mode
-" :imap - create new mapping for INSERT mode
-" :xmap - create new mapping for VISUAL mode
-" map will result in recirsive mappings (see pg 194 mouseless)
-" :nnoremap is non-recursive version
-" <space> <c-w> (Cntl W) <cr> (Enter)
-" :help key-notation -> to see full list
-" q:		- open the command history
-" q/ q! 	- open the search history
-" CTRL+f	- open the command history when in command line mode. edit
-" 		- command then hit enter
+"
+"
+" Mapping for vim telescope (fuzzy search preview)
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
