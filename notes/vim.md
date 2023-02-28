@@ -20,6 +20,12 @@ gf 		- open file in system default
 '<,$		- from first line of last visual search to end of file
 
 
+# regex
+\v convert to full regex 
+
+e.g. to replace everything in lines 191:253 that match regex pattern:
+:191,253s/\v AR[0-9]{1,3}:/
+
 # Vim Pope Surround
 S<p> 		- surround in <p></p> using visual mode
 ysiw" 		- surround in quotes or } ] etc. 
