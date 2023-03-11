@@ -20,6 +20,10 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
+# Set backspace in vi mode to delete 
+bindkey -M viins '^[[D^[[3~' backward-delete-char
+bindkey -M vicmd '^[[D^[[3~' backward-delete-char
+
 # Autocompletion
 # autoload -> loads a file containing shell comands
 # zsh will look in the zsh file search path defined in the variable $fpath
