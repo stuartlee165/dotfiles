@@ -1,16 +1,24 @@
 {
-    "languageserver": {
-        "bash": {
-            "command": "bash-language-server",
-            "args": ["start"],
-            "filetypes": ["sh"],
-            "ignoredRootPaths": ["~"]
-        }
-    },
-    "pyright.enable": true,
-    "pyright.inlayHints.functionReturnTypes": false,
-    "pyright.inlayHints.variableTypes":false,
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
-    "snippets.ultisnips.pythonPrompt": false
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+  "python.pythonPath": "/home/stuart/venv_playprojects/projects_website/venv_projects_website/bin/python",
+  "pyright.enable": true,
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.variableTypes": false,
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "snippets.ultisnips.pythonPrompt": false,
+  "sqlfluff.lintOnSave": true,
+  "html.format.enable": true,
+  "html.filetypes": ["html", "jinja", "handlebars", "htmldjango", "blade"],
+  "htmlhint.enable": true,
+  "prettier.enable": false,
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveFileTypes": ["html"]
 }

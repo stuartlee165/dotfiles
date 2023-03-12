@@ -306,6 +306,7 @@ let g:coc_global_extensions = [
             \ 'coc-pyright', 
             \ 'coc-sqlfluff', 
             \ 'coc-sql', 
+            \ 'coc-vimlsp', 
             \]
 
 " Allow go to definition etc. in coc vim
