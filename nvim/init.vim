@@ -304,9 +304,15 @@ let g:coc_global_extensions = [
             \ 'coc-html',
             \ 'coc-json', 
             \ 'coc-pyright', 
+            \ 'coc-sqlfluff', 
             \ 'coc-sql', 
             \]
 
+" Allow go to definition etc. in coc vim
+nmap <silent> gd <Plug>(coc-definition) 
+nmap <silent> gy <Plug>(coc-type-definition) 
+nmap <silent> gi <Plug>(coc-implementation) 
+nmap <silent> gr <Plug>(coc-references)
 
 " This is a very basic configuration - you can do way more than that (but do you really want to?)
 
@@ -408,3 +414,5 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
